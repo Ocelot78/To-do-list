@@ -1,0 +1,185 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+p {
+    font-family: "PT Sans", serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 3.5vh;
+    margin-bottom: 0.5vh;
+}
+body {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: auto  1fr auto;
+    grid-template-areas: 
+    "navbar navbar"
+    "sidebar main "
+    "sidebar footer";
+    background-color: #595959;
+} 
+/*Nav*/
+nav {
+    top: 0;
+    height: 5.5em;
+    position: sticky;
+    grid-area: navbar;
+    background-color: #6488EA;
+    background-image: linear-gradient(to bottom right, #6488EA,#ffffed);
+    padding: 1em;
+    font-family: "PT Sans", serif;
+    font-weight: 700;
+    font-style: normal;
+}
+nav > h2 {
+    margin-left: 286px;
+}
+nav > button {
+    margin-left: 95vw;
+    border: 0;
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+}
+nav > button > img {
+    width: 24px;
+    height: 24px;
+}
+/*menu*/
+aside{
+    position: sticky;
+    top: 7.5em;
+    align-self: self-start;
+    height: calc(100vh - 7.5em);
+    display: grid;
+    grid-template-rows: 1fr 5fr 0.4fr;
+    grid-area: sidebar;
+    background-color: darkgray;
+    font-family: "PT Sans", serif;
+    font-weight: 400;
+    font-style: italic;
+}
+aside > div > button {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+aside > div > h1 {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 0.3vh;
+    border: 1px solid lightgray;
+}
+aside > div > button {
+    background-color: lightcyan;
+    border: 0;
+    border-radius: 5px;
+    width: 290px;
+    grid-column: 1;
+    grid-row: 1;
+    margin-top: 0.3vh;
+    margin-left: 5px;
+    margin-right: 5px;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+}
+#new {
+    background-color: lightcyan;
+    border: 0;
+    border-radius: 5px;
+    width: 300px;
+    height: 5vh;
+    grid-row: 3;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+}
+#new > h1 {
+    color: blueviolet;
+}
+#routine {
+    margin-top: 1vh;
+}
+#routine > h1 {
+    color: aqua;
+}
+#lists{
+    overflow-y: auto;
+    overflow-x: hidden; 
+    max-height: 100%; 
+}
+/*main*/
+main {
+    grid-area: main;
+    overflow-y: auto;
+    overflow-x: hidden; 
+    max-height: 100%; 
+
+    background-color: lightgray;
+    border: 2px #595959;
+    font-family: "PT Sans", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+main > div {
+    width: 100%;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    border-top: 2px solid darkgray;
+    border-bottom: 2px solid darkgray;
+    margin: 5px;
+}
+main > div > button {
+    border: 0;
+    width: 64px;
+    height: 64px;
+    background-color: transparent;
+}
+main > div > button > img {
+    width: 32px;
+    height: 32px;
+}
+#delete_task {
+    margin-left: auto;
+}
+/*footer*/
+footer {
+    position: sticky;
+    bottom: 0;
+    grid-area: footer;
+    display: flex;
+    background-color: lightgrey;
+    padding: 2em;
+    font-family: "PT Sans", serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 20px;
+}
+footer > input{
+    box-sizing: border-box;
+    width: 89%;
+    height: 5vh;
+    background-color: #595959;
+    border: 0;
+    border-radius: 5px;
+    padding: 1em;
+    color: aliceblue;
+}
+footer > button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightcyan;
+    width: 10%;
+    height: 5vh ;
+    border: 0;
+    border-radius: 5px;
+    padding: 1em;
+}

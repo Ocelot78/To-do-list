@@ -1,0 +1,12 @@
+[
+    {
+        "ID": 1,
+        "Nazwa": "Task 1",
+        "Wykonane": false
+    },
+    {
+        "ID": 2,
+        "Nazwa": "Task 2",
+        "Wykonane": true
+    }
+]

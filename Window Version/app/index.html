@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self'">
+    <link rel="icon" href="assets/event.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="app.css">
+    <script src="script.js"></script>
+    
+    <title>To do list App</title>
+  </head>
+  <body>
+    <nav id="navi">
+      <h1>To do list App</h1>
+      <h2>Lista zadań</h2>
+      <button><img src="assets/tune.svg"  alt=""></button>
+    </nav>
+    <aside id="menu">
+      <div>
+        <button id="routine"><img src="assets/routine.svg"  alt=""><h1>|  </h1>Zadania na dzień</button>
+        <button id="main_list"><img src="assets/home.svg"  alt=""><h1>|  </h1>Lista zadań</button>
+        <h1></h1>
+      </div>
+      <div id="lists">
+        
+      </div>
+      <button id="new" onclick="addlist()"><img src="assets/plus.svg"  alt="">Nowa lista zadań</button>
+    </aside>
+    <main>      
+      
+    </main>
+    <footer>
+      <input type="text" class="pole" placeholder="Dodaj nowe zadanie">
+      <button id="dodaj"><img src="assets/plus.svg" alt=""></button>
+    </footer>
+  </body>
+</html>
