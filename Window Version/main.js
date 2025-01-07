@@ -22,15 +22,15 @@ function mainWindowCreate() {
 function aboutWindowCreate() {
     const aboutWindow = new BrowserWindow({
         title: "About To do list",
-        width: isDev ? 1200 : 800,
-        height: 600
+        width: isDev ? 1000 : 400,
+        height: 800
     });
 
     if (isDev) {
         aboutWindow.webContents.openDevTools()
     }
 
-    aboutWindow.loadFile(path.join(__dirname, "./app/index.html"));
+    aboutWindow.loadFile(path.join(__dirname, "./app/about.html"));
 }
 
 app.whenReady().then(() => {
@@ -50,6 +50,7 @@ const menu = [
         submenu: [
             {
                 label: 'About',
+                click: aboutWindowCreate
             }
         ]
     }] : []),
@@ -60,6 +61,7 @@ const menu = [
         label: 'Help',
         submenu: [{
             label: 'About',
+            click: aboutWindowCreate
         }]
     }] : []),
 ];
