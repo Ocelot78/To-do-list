@@ -1,13 +1,16 @@
+
 ## Console Version
 Created using GO.
 95% Completed.
 Still a few bugs.
+
 ## Window Version
 Created using electron js
 5% Completed.
 HTML ❎ 95%
 CSS ❎ 95%
 JS ❎ 5%
+
 ## Credit
 Copyright (c) 2010, ParaType Ltd. (http://www.paratype.com/public), with Reserved Font Names "PT Sans" and "ParaType".
 This Font Software is licensed under the SIL Open Font License, Version 1.1 . This license is copied below, and is also available with a FAQ at: https://openfontlicense.org
@@ -32,7 +35,9 @@ TERMINATION
 This license becomes null and void if any of the above conditions are not met.
 DISCLAIMER
 THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM OTHER DEALINGS IN THE FONT SOFTWARE. 
+
 Icons by Google Fonts, licensed under Apache 2.0. 
 For more details, see: https://www.apache.org/licenses/LICENSE-2.0
+
 ## License
 This project is licensed under the [MIT License](LICENSE).
