@@ -12,13 +12,15 @@ p {
 body {
     min-height: 100vh;
     display: grid;
+    overflow: hidden;
     grid-template-columns: 300px 1fr;
     grid-template-rows: auto  1fr auto;
     grid-template-areas: 
     "navbar navbar"
     "sidebar main "
     "sidebar footer";
-    background-color: #595959;
+    /*background-color: #595959;*/
+    background-image: linear-gradient(to bottom right, #145ac4,#b5b5a8, #ffffed);
 } 
 /*Nav*/
 nav {
@@ -26,15 +28,19 @@ nav {
     height: 5.5em;
     position: sticky;
     grid-area: navbar;
-    background-color: #6488EA;
-    background-image: linear-gradient(to bottom right, #6488EA,#ffffed);
+    /*background-color: #6488EA;*/
+    /*background-image: linear-gradient(to bottom right, #6488EA,#ffffed);*/
     padding: 1em;
     font-family: "PT Sans", serif;
-    font-weight: 700;
+    font-weight: 400;
     font-style: normal;
+    text-shadow: 0.2em 0.2em rgba(0, 0, 0, 0.09);
+}
+nav > h1 {
+    margin-left: 50px;
 }
 nav > h2 {
-    margin-left: 286px;
+    margin-left: 300px;
 }
 nav > button {
     margin-left: 95vw;
@@ -54,9 +60,10 @@ aside{
     align-self: self-start;
     height: calc(100vh - 7.5em);
     display: grid;
+    border-top: 0.2em  solid lightskyblue;
     grid-template-rows: 1fr 5fr 0.4fr;
     grid-area: sidebar;
-    background-color: darkgray;
+    /*background-color: darkgray;*/
     font-family: "PT Sans", serif;
     font-weight: 400;
     font-style: italic;
@@ -86,7 +93,10 @@ aside > div > button {
     display: flex;
     align-items: center;
 }
-#new {
+aside > div > button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+#newList {
     background-color: lightcyan;
     border: 0;
     border-radius: 5px;
@@ -102,6 +112,9 @@ aside > div > button {
 #new > h1 {
     color: blueviolet;
 }
+#new:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }
 #routine {
     margin-top: 1vh;
 }
@@ -119,9 +132,9 @@ main {
     overflow-y: auto;
     overflow-x: hidden; 
     max-height: 100%; 
-
-    background-color: lightgray;
-    border: 2px #595959;
+    /*background-color: lightgray;*/
+    border-top: 0.2em  solid lightskyblue;
+    border-left: 0.2em  solid lightskyblue;
     font-family: "PT Sans", serif;
     font-weight: 400;
     font-style: normal;
@@ -155,7 +168,8 @@ footer {
     bottom: 0;
     grid-area: footer;
     display: flex;
-    background-color: lightgrey;
+    /*background-color: lightgrey;*/
+    border-left: 0.2em  solid lightskyblue;
     padding: 2em;
     font-family: "PT Sans", serif;
     font-weight: 400;
@@ -166,11 +180,14 @@ footer > input{
     box-sizing: border-box;
     width: 89%;
     height: 5vh;
-    background-color: #595959;
+    background-color: lightcyan;
     border: 0;
     border-radius: 5px;
     padding: 1em;
-    color: aliceblue;
+    color: black;
+}
+footer > input:focus {
+    outline: none;
 }
 footer > button {
     display: inline-flex;

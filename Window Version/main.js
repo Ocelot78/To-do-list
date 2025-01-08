@@ -10,9 +10,14 @@ function mainWindowCreate() {
     const mainWindow = new BrowserWindow({
         title: "To do list",
         width: isDev ? 1900 : 1000,
-        height: 900
+        height: 900,
+        webPreferences: {
+            contextIsolation: true,
+            nodeIntegration: false,
+            preload: path.join(__dirname, 'preload.js')
+        }        
     });
-
+    
     if (isDev) {
         mainWindow.webContents.openDevTools()
     }
@@ -39,9 +44,9 @@ app.whenReady().then(() => {
     Menu.setApplicationMenu(menuMain);
 
     app.on("activate", () => {
-        if (BrowserWindow.getAllWindows.length === 0){
-            mainWindowCreate()
-        }
+        if (BrowserWindow.getAllWindows().length === 0) {
+            mainWindowCreate();
+        }        
     })
 })
 const menu = [
