@@ -10,32 +10,42 @@
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/app.css">
     <script src="js/script.js"></script>
-    
     <title>To do list App</title>
   </head>
   <body>
-    <nav id="navi">
-      <h1>To do list App</h1>
-      <h2>Lista zadań</h2>
-      <button><img src="assets/tune.svg"  alt=""></button>
-    </nav>
-    <aside id="menu">
+    <div id="inputAlert" class="alert">
       <div>
-        <button id="routine"><img src="assets/routine.svg"  alt=""><h1>|  </h1>Zadania na dzień</button>
-        <button id="main_list"><img src="assets/home.svg"  alt=""><h1>|  </h1>Lista zadań</button>
-        <h1></h1>
+        <p id="alertText">Podaj nazwę listy.</p>
+        <input id="listInput" type="text" placeholder="Nazwa listy">
+        <p id="errorAlert"></p>
+        <button id="inputAlertAccept" class="alertButton">Okej</button>
+        <button id="inputAlertCancel" class="alertButton">Anuluj</button>
       </div>
-      <div id="lists">
+    </div>
+    <div id="app">
+      <nav id="navi">
+        <h1>To do list App</h1>
+        <h2>Lista zadań</h2>
+        <button><img src="assets/tune.svg"  alt=""></button>
+      </nav>
+      <aside id="menu">
+        <div>
+          <button id="routine"><img src="assets/routine.svg"  alt=""><h1>|  </h1>Zadania na dzień</button>
+          <button id="main_list"><img src="assets/home.svg"  alt=""><h1>|  </h1>Lista zadań</button>
+          <h1></h1>
+        </div>
+        <div id="lists">
+          
+        </div>
+        <button id="newList"><img src="assets/plus.svg"  alt="">Nowa lista zadań</button>
+      </aside>
+      <main>      
         
-      </div>
-      <button id="newList"><img src="assets/plus.svg"  alt="">Nowa lista zadań</button>
-    </aside>
-    <main>      
-      
-    </main>
-    <footer>
-      <input type="text" class="pole" placeholder="Dodaj nowe zadanie">
-      <button id="dodaj"><img src="assets/plus.svg" alt=""></button>
-    </footer>
+      </main>
+      <footer>
+        <input type="text" placeholder="Dodaj nowe zadanie">
+        <button id="dodaj"><img src="assets/plus.svg" alt=""></button>
+      </footer>
+    </div>
   </body>
 </html>

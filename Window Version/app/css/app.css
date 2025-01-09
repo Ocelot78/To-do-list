@@ -2,14 +2,7 @@
     margin: 0;
     padding: 0;
 }
-p {
-    font-family: "PT Sans", serif;
-    font-weight: 700;
-    font-style: normal;
-    font-size: 3.5vh;
-    margin-bottom: 0.5vh;
-}
-body {
+#app {
     min-height: 100vh;
     display: grid;
     overflow: hidden;
@@ -22,6 +15,63 @@ body {
     /*background-color: #595959;*/
     background-image: linear-gradient(to bottom right, #145ac4,#b5b5a8, #ffffed);
 } 
+/*alert*/
+#inputAlert {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 21vw;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background-image: linear-gradient(to bottom right, rgba(0, 0, 196, 0.2), rgba(255, 255, 237, 0.2));
+    text-align: center;
+    justify-content: center;
+}  
+#alertText {
+    font-family: "PT Sans", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3.5vh;
+    text-shadow: 0.2em 0.2em rgba(0, 0, 0, 0.09);
+}
+#errorAlert {
+    font-family: "PT Sans", serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1vh;
+    color: red;
+}
+#listInput {
+    margin-top: 1vh;
+    width: 20vw;
+    height: 4vh;
+    background-color: lightcyan;
+    border: 0;
+    border-radius: 5px;
+    padding: 0.1em;
+}
+#listInput:focus {
+    outline: none;
+}
+.alertButton {
+    margin-top: 1vh;
+    margin-bottom: 0.5vh;
+    width: 5vw;
+    height: 4vh;
+    border: 0;
+    border-radius: 5px;
+}
+.alertButton:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+#inputAlertAccept {
+    background-color: lightcyan;
+}
+#inputAlertCancel {
+    border: 0.25em solid lightcyan;
+    background-color: transparent;
+}
 /*Nav*/
 nav {
     top: 0;
@@ -95,7 +145,7 @@ aside > div > button {
 }
 aside > div > button:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-  }
+}
 #newList {
     background-color: lightcyan;
     border: 0;
@@ -114,7 +164,7 @@ aside > div > button:hover {
 }
 #new:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-  }
+}
 #routine {
     margin-top: 1vh;
 }

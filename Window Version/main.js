@@ -12,6 +12,7 @@ function mainWindowCreate() {
         width: isDev ? 1900 : 1000,
         height: 900,
         webPreferences: {
+            sandbox: false,
             contextIsolation: true,
             nodeIntegration: false,
             preload: path.join(__dirname, 'preload.js')
