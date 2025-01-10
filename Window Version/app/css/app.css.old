@@ -1,0 +1,163 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "PT Sans", sans-serif;
+    line-height: 1.5;
+    color: #2b2b2b;
+    background-color: #f9f9f9;
+}
+
+#app {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: 
+        "navbar navbar"
+        "sidebar main"
+        "sidebar footer";
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+nav {
+    grid-area: navbar;
+    background-color: #2c3e50;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav h1, nav h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+nav button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+nav button img {
+    width: 24px;
+    height: 24px;
+    filter: invert(1); /* Białe ikony */
+}
+
+aside {
+    grid-area: sidebar;
+    background-color: #34495e;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+aside button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #1abc9c;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+aside button:hover {
+    background-color: #16a085;
+}
+
+#newList {
+    background-color: #e67e22;
+}
+
+#newList:hover {
+    background-color: #d35400;
+}
+
+main {
+    grid-area: main;
+    padding: 1rem;
+    background-color: #ecf0f1;
+    overflow-y: auto;
+}
+
+main div {
+    padding: 1rem;
+    background-color: white;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    grid-area: footer;
+    background-color: #2c3e50;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+}
+
+footer input {
+    flex: 1;
+    padding: 0.5rem;
+    margin-right: 1rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+footer button {
+    background-color: #1abc9c;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+footer button:hover {
+    background-color: #16a085;
+}
+
+#inputAlert {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    color: #2c3e50;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.alertButton {
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #3498db;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.alertButton:hover {
+    background-color: #2980b9;
+}
