@@ -1,3 +1,8 @@
+/*HTML TEMPLATES
+TASKnotdone <div id="1"><button id="doneTask"><img src="assets/cancel.svg"></button>Task1<button id="deleteTask"><img src="assets/delete_2.svg"></button></div>
+TASKdone <div id="1"><button id="doneTask"><img src="assets/check.svg"></button>Task1<button id="deleteTask"><img src="assets/delete_2.svg"></button></div>
+Button <button id="main_list"><img src="assets/medium.svg"  alt=""><h1>|  </h1>Task List</button>
+*/
 function addList(name) {
     const lists = document.getElementById("lists");
     const button = document.createElement("button");
@@ -14,6 +19,7 @@ function addList(name) {
         })
     }
     button.id = name;
+    button.onclick = appearList(name)
     button.innerHTML = `
         <img src="assets/medium.svg" alt="">
         <h1>|</h1>
@@ -22,39 +28,73 @@ function addList(name) {
 }
 function readlists() {
     const lists = document.getElementById("lists");
-    const filePath = "app/js/data/"
-    let fileslist = fs.readdirSync(filePath)
+    const filePath = "app/js/data/";
+    let fileslist = fs.readdirSync(filePath);
     for (let i in fileslist) {
-        fs.readFile(filePath+fileslist[i], (error, data) => {
-            if (error) {
-                throw (error)
-            }
-            console.log(fileslist[i])
-            let name = fileslist[i] 
-            name = name.replace(".json","")
-            const button = document.createElement("button");
-            button.id = name;
-            button.innerHTML = `
-                <img src="assets/medium.svg" alt="">
-                <h1>|</h1>
-                ${name}`
-            lists.appendChild(button); 
-        })
+        const fullPath = path.join(filePath, fileslist[i]);
+        const is_File = window.fs.isFile(fullPath)
+        if (is_File) {
+            fs.readFile(fullPath, (error, data) => {
+                if (error) {
+                    throw error
+                }
+                console.log(fileslist[i]);
+                let name = fileslist[i].replace(".json", "");
+                const button = document.createElement("button");
+                button.id = name;
+                button.onclick = () => appearList(name);
+                button.innerHTML = `
+                    <img src="assets/medium.svg" alt="">
+                    <h1>|</h1>
+                    ${name}`;
+                lists.appendChild(button);
+            });
+        }
     }
 }
-function readlist(name,folder) {
-    const filePath = "app/js/"+folder+"/"+name+".json"
-    fs.readFile(filePath,"utf-8", (error,data)=>{
-        if (error) {
-            throw error
-        }
-        const tasks = JSON.parse(data)
-        console.log(tasks)
-    })
-}
-readlist("routine","default")
-function appearList(name, data) {
-    let listButton = document.getElementById(name+".json")
+function appearList(name) {
+    const listButton = document.getElementById(name);
+    const tasksList = document.getElementById("tasks");
+    tasksList.innerHTML = ""
+    let folder = null
+    if (listButton && (listButton.id === "routine" || listButton.id === "mainlist")) {
+        folder = "data/default"
+        const filePath = path.join("app/js/",folder+"/", name+".json")
+        fs.readFile(filePath,"utf-8", (error,data)=>{
+            if (error) {
+                throw error
+            }
+            const tasks = JSON.parse(data)
+            console.log(tasks)
+            //Is empty not working
+            if (Array.isArray(tasks) && tasks.length === 0) {
+                console.log("emptylist");
+                tasksList.innerHTML = "<h2>Lista jest pusta</h2>";
+            }else {
+                //works fine
+                tasks.forEach(task => {
+                    const div = document.createElement("div");
+                    div.id = task.ID
+                    if (task.Done) {
+                        div.innerHTML = `<button id="doneTask"><img src="assets/check.svg"></button>${task.Name}<button id="deleteTask"><img src="assets/delete_2.svg"></button>`
+                    }else {
+                        div.innerHTML = `<button id="doneTask"><img src="assets/cancel.svg"></button>${task.Name}<button id="deleteTask"><img src="assets/delete_2.svg"></button>`
+                    }
+                    tasksList.appendChild(div)
+                });
+            }
+        })
+    } else {
+        folder = "data"
+        const filePath = path.join("app/js/",folder+"/", name+".json")
+        fs.readFile(filePath,"utf-8", (error,data)=>{
+            if (error) {
+                throw error
+            }
+            const tasks = JSON.parse(data)
+            console.log(tasks)
+        })
+    }
 }
 document.addEventListener("DOMContentLoaded", () => {
     let add = document.getElementById("newList");
@@ -65,6 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let alertCancel = document.getElementById("inputAlertCancel");
     let errorText = document.getElementById("errorAlert")
     readlists()
+
     add.addEventListener("click", () => {
         alert.style.display = "flex"
         errorText.innerHTML = ""

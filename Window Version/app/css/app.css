@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
 }
+
 #app {
     min-height: 100vh;
     display: grid;
@@ -209,7 +210,7 @@ main > div > button > img {
     width: 32px;
     height: 32px;
 }
-#delete_task {
+#deleteTask {
     margin-left: auto;
 }
 /*footer*/
