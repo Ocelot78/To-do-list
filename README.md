@@ -9,7 +9,7 @@ Created using electron js
 5% Completed.
 HTML ❎ 95%
 CSS ❎ 95%
-JS ❎ 5%
+JS ❎ 10%
 
 ## Credit
 Copyright (c) 2010, ParaType Ltd. (http://www.paratype.com/public), with Reserved Font Names "PT Sans" and "ParaType".
