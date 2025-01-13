@@ -1,10 +1,15 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
-
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
 #app {
-    min-height: 100vh;
     display: grid;
     overflow: hidden;
     grid-template-columns: 300px 1fr;
@@ -109,7 +114,7 @@ aside{
     position: sticky;
     top: 7.5em;
     align-self: self-start;
-    height: calc(100vh - 7.5em);
+    height: calc(100vh - 5.5em);
     display: grid;
     border-top: 0.2em  solid lightskyblue;
     grid-template-rows: 1fr 5fr 0.4fr;
@@ -154,16 +159,14 @@ aside > div > button:hover {
     width: 300px;
     height: 5vh;
     grid-row: 3;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: auto;
+    margin: 0 auto;
     display: flex;
     align-items: center;
 }
-#new > h1 {
+#newList > h1 {
     color: blueviolet;
 }
-#new:hover {
+#newList:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 #routine {
@@ -182,6 +185,7 @@ main {
     grid-area: main;
     overflow-y: auto;
     overflow-x: hidden; 
+    position: relative;
     max-height: 100%; 
     /*background-color: lightgray;*/
     border-top: 0.2em  solid lightskyblue;
@@ -190,7 +194,14 @@ main {
     font-weight: 400;
     font-style: normal;
 }
-
+main > h2 {
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    text-shadow: 0.2em 0.2em rgba(0, 0, 0, 0.09);
+    text-align: center;
+}
 main > div {
     width: 100%;
     display: flex;
