@@ -1,9 +1,3 @@
-
-## Console Version
-Created using GO.
-95% Completed.
-Still a few bugs.
-
 ## Window Version
 Created using electron js
 5% Completed.
