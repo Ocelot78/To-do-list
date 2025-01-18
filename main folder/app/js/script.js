@@ -4,11 +4,14 @@ TASKdone <div id="1"><button id="doneTask"><img src="assets/check.svg"></button>
 Button <button id="main_list"><img src="assets/medium.svg"  alt=""><h1>|  </h1>Task List</button>
 empty <h2>Lista jest pusta</h2>
 */
+let openList = null
+let list = []
+let listFolder = null
 function addList(name) {
     const lists = document.getElementById("lists");
     const button = document.createElement("button");
-    const emptylist = [];
-    const data = JSON.stringify(emptylist);
+    const emptyList = [];
+    const data = JSON.stringify(emptyList);
     const filePath = path.join("app/js","data", name+".json")
     if (window.fs.fileExists(filePath))
         throw (error)
@@ -20,27 +23,27 @@ function addList(name) {
         })
     }
     button.id = name;
-    button.onclick = appearList(name)
+    button.onclick = () => appearList(name);
     button.innerHTML = `
         <img src="assets/medium.svg" alt="">
         <h1>|</h1>
         ${name}`
     lists.appendChild(button);
 }
-function readlists() {
+function readLists() {
     const lists = document.getElementById("lists");
     const filePath = "app/js/data/";
-    let fileslist = fs.readdirSync(filePath);
-    for (let i in fileslist) {
-        const fullPath = path.join(filePath, fileslist[i]);
+    let filesList = fs.readdirSync(filePath);
+    for (let i in filesList) {
+        const fullPath = path.join(filePath, filesList[i]);
         const is_File = window.fs.isFile(fullPath)
         if (is_File) {
             fs.readFile(fullPath, (error, data) => {
                 if (error) {
                     throw error
                 }
-                console.log(fileslist[i]);
-                let name = fileslist[i].replace(".json", "");
+                console.log(filesList[i]);
+                let name = filesList[i].replace(".json", "");
                 const button = document.createElement("button");
                 button.id = name;
                 button.onclick = () => appearList(name);
@@ -53,7 +56,7 @@ function readlists() {
         }
     }
 }
-function appearList(name, list) {
+function appearList(name) {
     const listButton = document.getElementById(name);
     const tasksList = document.getElementById("tasks");
     tasksList.innerHTML = ""
@@ -68,7 +71,7 @@ function appearList(name, list) {
             }
             const tasks = JSON.parse(data)
             if (Array.isArray(tasks) && tasks.length === 0) {
-                console.log("emptylist");
+                console.log("emptyList");
                 tasksList.innerHTML = "<h2>Lista jest pusta</h2>";
             }else {
                 tasks.forEach(task => {
@@ -110,32 +113,52 @@ function appearList(name, list) {
                 });
             }
         })
-    
     }
+    openList = name
+    listFolder = folder
 }
-function addTask(name, list, idlist) {
-    idlist.sort((a,b)=> a - b)
-    for (let i=0; i<idlist.length; i++){
-        if (idlist[i + 1] !== idlist[i] + 1) {
-            idlist.push(idlist[i] + 1)
-            idlist.sort((a, b) => a - b)
+function addTask(name, idlist, folder, taskListName) {
+    idlist.sort((a, b) => a - b);
+    let newId = 1;
+    for (let i = 0; i < idlist.length; i++) {
+        if (idlist[i] !== i + 1) {
+            newId = i + 1;
+            break;
         }
-        idlist.push(idlist[idlist.length - 1] + 1);
-        idlist.sort((a, b) => a - b);
-        console.log(idlist)
     }
-    const task ={
-        ID: 1,
+    if (newId === 1 && idlist.length > 0) {
+        newId = idlist[idlist.length - 1] + 1;
+    }
+    const task = {
+        ID: newId,
         Name: name,
-        Done: false
-    }
-    const div = document.createElement("div");
-    div.id = task.ID
-    div.innerHTML = `<button id="doneTask"><img src="assets/check.svg"></button>${name}<button id="deleteTask"><img src="assets/delete_2.svg"></button>`
+        Done: false,
+    };
+    const filePath = path.join("app/js/",folder+"/", taskListName+".json")
+    idlist.push(newId);
+    fs.readFile(filePath, "utf-8", (error, data) => {
+        if (error) {
+            console.error("Błąd odczytu pliku:", error);
+            return;
+        }
+
+        let tasks = JSON.parse(data);
+        tasks.push(task);
+        fs.writeFile(filePath, JSON.stringify(tasks, null, 2), (err) => {
+            if (err) {
+                console.log("Błąd zapisu pliku:", err);
+            }
+        });
+        const div = document.createElement("div");
+        div.id = task.ID;
+        div.innerHTML = `<button id="doneTask"><img src="assets/cancel.svg"></button>${name}<button id="deleteTask"><img src="assets/delete_2.svg"></button>`;
+        const tasksList = document.getElementById("tasks");
+        tasksList.appendChild(div);
+    });
 }
 document.addEventListener("DOMContentLoaded", () => {
     let add = document.getElementById("newList")
-    let addTask = document.getElementById("addTask")
+    let addTaskB = document.getElementById("addTask")
     let addTaskText = document.getElementById("addTaskText")
     let app = document.getElementById("app")
     let alert = document.getElementById("inputAlert")
@@ -144,15 +167,20 @@ document.addEventListener("DOMContentLoaded", () => {
     let alertCancel = document.getElementById("inputAlertCancel")
     let errorText = document.getElementById("errorAlert")
     
-    readlists()
+    readLists()
     
     add.addEventListener("click", () => {
         alert.style.display = "flex"
         errorText.innerHTML = ""
         app.style.filter = "blur(8px)";
     });
-    addTask.addEventListener("click", () =>{
-        addTask(addTaskText.value,)
+    addTaskB.addEventListener("click", () =>{
+        if (addTaskText.value == "") {
+            addTaskText.value = "Wartość nie może byc pusta"
+        }else{
+            addTask(addTaskText.value,list,listFolder,openList)
+        }
+        
     })
     alertAccept.addEventListener("click", () => {
         if (listInput.value == ""){
