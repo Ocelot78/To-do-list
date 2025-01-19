@@ -8,10 +8,5 @@
     "ID": 2,
     "Name": "Task 4",
     "Done": true
-  },
-  {
-    "ID": 3,
-    "Name": "task23",
-    "Done": false
   }
 ]

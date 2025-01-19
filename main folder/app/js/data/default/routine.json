@@ -1,12 +1,7 @@
 [
-    {
-        "ID": 1,
-        "Name": "Task 1",
-        "Done": false
-    },
-    {
-        "ID": 2,
-        "Name": "Task 2",
-        "Done": true
-    }
+  {
+    "ID": 1,
+    "Name": "Task 1",
+    "Done": false
+  }
 ]
